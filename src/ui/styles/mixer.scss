@@ -1,0 +1,132 @@
+@use './colors.scss' as *;
+@use "sass:color";
+
+#mixer-page {
+    display: flex;
+    flex-direction: column;
+
+    .page-desc {
+        margin: 15px 0;
+    }
+
+    .calculator {
+        width: 940px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .small-effect {
+            font-size: 18px;
+        }
+
+        .ingredient-wrapper {
+            border: 1px solid color.adjust($dark, $lightness: 10%);
+            border-radius: 15px;
+            padding: 20px;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+
+            h2 {
+                margin: auto;
+                margin-bottom: 10px;
+            }
+
+            .ingredients {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .base-custom-select {
+                    margin-bottom: 30px;
+                    width: 445px;
+                }
+
+                .ingredient-select {
+                    display: flex;
+                    width: 445px;
+
+                    &:not(:last-child) {
+                        margin-bottom: 10px;
+                    }
+
+                    .remove {
+                        margin: auto;
+                        margin-left: 20px;
+                        cursor: pointer;
+
+                        &.disabled {
+                            svg {
+                                fill: color.adjust($dark, $lightness: 10%) !important;
+                                cursor: default !important;
+                            }
+                        }
+
+                        &:hover {
+                            svg {
+                                fill: $red;
+                            }
+                        }
+
+                        svg {
+                            width: 25px;
+                            height: 25px;
+                            fill: $light;
+                            transition: all .2s ease-in-out;
+                        }
+                    }
+                }
+            }
+        }
+
+        .output {
+            border: 1px solid color.adjust($dark, $lightness: 10%);
+            background-color: $dark;
+            border-radius: 15px;
+            padding: 20px;
+            width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 275px;
+
+            .prices {
+                display: grid;
+                grid-template-columns: repeat(2, 280px);
+                width: 100%;
+                justify-content: space-between;
+
+                .price {
+                    color: $lg;
+                    font-size: 28px;
+                }
+
+                .addiction {
+                    font-size: 28px;
+                }
+
+                p {
+                    white-space: nowrap;
+                }
+            }
+
+            .price {
+                color: $lg;
+                font-size: 28px;
+            }
+
+            h2 {
+                margin: auto;
+                margin-bottom: 10px;
+                margin-top: 0;
+            }
+
+            .result-mix {
+                text-align: left;
+                width: 700px;
+            }
+        }
+    }
+}

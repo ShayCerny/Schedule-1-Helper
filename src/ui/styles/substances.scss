@@ -1,0 +1,43 @@
+@use './colors.scss' as *;
+@use "sass:color";
+
+
+#substances {
+    .substance-list {
+        display: grid;
+        grid-template-columns: repeat(2, 450px);
+        gap: 20px;
+        width: 940px;
+
+        .sub {
+            width: 430px;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            border: 1px solid color.adjust($dark, $lightness: 10%);
+            border-radius: 15px;
+            padding: 10px;
+            height: 80px;
+
+            .info {
+                display: flex;
+            }
+
+            h2 {
+                margin: auto 10px;
+                text-decoration: underline;
+            }
+
+            p {
+                margin: auto 10px;
+            }
+
+            .price {
+                color: $lg;
+                font-size: 28px;
+            }
+
+        }
+
+    }
+}

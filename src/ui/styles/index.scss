@@ -1,0 +1,70 @@
+@use "./colors.scss" as *;
+@use "sass:color";
+
+
+@font-face {
+    font-family: 'Barriecito';
+    src: url("../../assets/Barriecito-Regular.ttf");
+}
+
+:root {
+    background-color: $darker;
+    font-family: "Barriecito";
+    color: $light;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+    p,
+    a {
+        font-size: 24px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    width: 950px;
+    height: 700px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 30px;
+
+    // Custom scrollbar styles
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: color.adjust($dark, $lightness: 5%);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $light;
+        border-radius: 10px;
+        border: 2px solid $dark;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $lg;
+    }
+
+
+}

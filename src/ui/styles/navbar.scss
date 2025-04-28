@@ -1,0 +1,208 @@
+@use './colors.scss' as *;
+@use "sass:color";
+
+.navbar {
+    height: 60px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: $dark;
+    -webkit-app-region: drag;
+    user-select: none;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 60px;
+        width: 120vw;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        /* Make sure it stays behind the navbar */
+        box-shadow: 0 5px 20px color.adjust($dark, $lightness: -10%);
+    }
+
+    svg,
+    img {
+        width: 50px;
+        height: 50px;
+        fill: $light;
+    }
+
+    #sidebar-toggle {
+        position: fixed;
+        left: 0;
+        width: 75px;
+        height: 60px;
+        display: flex;
+        -webkit-app-region: no-drag;
+        border-right: 1px solid color.change($light, $alpha: 50%);
+        transition: all .3s;
+
+        &:not(.deactivate) {
+            cursor: pointer;
+
+            &:hover {
+                background-color: $green ;
+            }
+        }
+
+
+        svg {
+            margin: auto;
+        }
+    }
+
+    .title {
+        display: flex;
+        flex-direction: row;
+
+        h1 {
+            margin: auto;
+        }
+    }
+
+    #window-controls {
+        position: fixed;
+        right: 0;
+        display: flex;
+        -webkit-app-region: no-drag;
+
+        .control {
+            width: 75px;
+            height: 60px;
+            display: flex;
+            border-left: 1px solid color.change($light, $alpha: 50%);
+            transition: all .3s;
+            cursor: pointer;
+
+            svg {
+                margin: auto;
+            }
+        }
+
+        #minimize:hover {
+            background-color: $green;
+        }
+
+        #close:hover {
+            background-color: $red;
+        }
+
+    }
+
+
+    .side-bar {
+        position: absolute;
+        left: 0;
+        top: 60px;
+        width: 260px;
+        height: 740px;
+        z-index: 3;
+        background-color: $dark;
+        transition: all .3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 1;
+
+            a {
+                text-decoration: none;
+                color: $light;
+                width: 240px;
+                padding: 15px 10px;
+
+                &:hover {
+                    background-color: $green;
+                }
+
+                &.active {
+                    background-color: color.adjust($green, $lightness: -10%);
+                }
+
+                &:first-of-type {
+                    margin-top: 30px;
+                    border-bottom: 1px solid color.change($light, $alpha: 50%);
+                }
+
+                &:not(:first-of-type):not(:last-of-type) {
+                    border-bottom: 1px solid color.change($light, $alpha: 50%);
+                }
+            }
+        }
+
+        .settings {
+            display: flex;
+            width: 240px;
+            justify-content: space-evenly;
+            padding: 15px 10px;
+            border-top: 1px solid color.change($light, $alpha: 50%);
+            cursor: pointer;
+            text-decoration: none;
+
+            &:hover {
+                background-color: $green;
+
+                svg {
+                    animation: rotate 4s linear infinite;
+                    animation-delay: 0s;
+                }
+            }
+
+            svg {
+                width: 40px;
+                height: 40px;
+                margin: auto;
+            }
+
+            h2 {
+                margin: auto;
+                text-decoration: none !important;
+                color: $light;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 120vh;
+            width: 260px;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            box-shadow: 5px 30px 25px color.adjust($dark, $lightness: -10%);
+        }
+
+        &.closed {
+            transform: translateX(-260px);
+
+            &::after {
+                box-shadow: none;
+            }
+        }
+    }
+
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

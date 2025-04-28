@@ -1,0 +1,161 @@
+@use './colors.scss' as *;
+@use 'sass:color';
+
+
+#discovered-page {
+    display: flex;
+    flex-direction: column;
+
+    .info {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 940px;
+
+        p {
+            margin-left: 20px;
+            font-size: 20px;
+        }
+
+        .save-select-button {
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            position: absolute;
+            right: 20px;
+            padding: 5px;
+            display: flex;
+            border: 1px solid $light;
+            border-radius: 5px;
+            background-color: $dark;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $green;
+            }
+
+
+            p {
+                margin: auto !important;
+            }
+        }
+    }
+
+    .pages {
+        .tabs {
+            display: flex;
+
+            h2 {
+                padding: 5px 20px;
+                margin: 0;
+                border-left: 2px solid $light;
+                border-right: 2px solid $light;
+                border-top: 2px solid $light;
+                border-radius: 15px 15px 0px 0px;
+                background-color: $dark;
+
+                &:first-child {
+                    margin-left: 15px;
+                }
+
+                &.selected {
+                    background-color: color.adjust($green, $lightness: -10%);
+                }
+
+                &:not(.selected):hover {
+                    cursor: pointer;
+                    background-color: $green;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 20px;
+                }
+            }
+        }
+
+        .pagination-page {
+            background-color: $dark;
+            border: 2px solid $light;
+            border-radius: 0 15px 15px 15px;
+            min-height: 540px;
+            width: 900px;
+            margin: auto;
+            margin-left: 15px;
+
+            .not-found {
+                margin-left: 20px;
+            }
+
+            .search {
+                height: 40px;
+                width: 720px;
+                margin: 15px auto;
+
+                input {
+                    width: 700px;
+                    height: 40px;
+
+                    background-color: $darker;
+                    border: 1px solid color.adjust($dark, $lightness: 10%);
+                    font-size: 24px;
+                    border-radius: 5px;
+                    padding-left: 10px;
+                    color: $light;
+
+                    &:focus {
+                        outline: 1px solid $lg;
+                    }
+
+                    &:hover {
+                        border: 1px solid color.adjust($dark, $lightness: 30%);
+                    }
+
+                }
+            }
+
+            .recipe {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                margin: 20px auto;
+                background-color: $darker;
+                border-radius: 5px;
+                border: 1px solid $light;
+                padding: 15px;
+
+                .name-base {
+                    display: flex;
+                    align-items: center;
+
+                    h2 {
+                        margin: 0;
+                    }
+                    p{
+                        margin-left: 15px;
+                    }
+                }
+
+
+                .prices {
+                    display: grid;
+                    grid-template-columns: repeat(2, 280px);
+                    width: 100%;
+                    justify-content: space-between;
+
+                    .price {
+                        color: $lg;
+                        font-size: 28px;
+                    }
+
+                    .addiction {
+                        font-size: 28px;
+                    }
+
+                    p {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}

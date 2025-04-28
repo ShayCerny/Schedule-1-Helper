@@ -1,0 +1,83 @@
+@use './colors.scss' as *;
+@use "sass:color";
+
+#guide {
+    .explaination {
+        line-height: 1.5;
+
+        .paragraph {
+            text-indent: 30px;
+        }
+
+        span {
+            margin: 0 10px;
+            font-size: 28px;
+        }
+
+        .weed {
+            color: $lg;
+        }
+
+        .meth {
+            color: rgb(96, 210, 210);
+        }
+
+        .coke {
+            color: rgb(240, 234, 107);
+        }
+
+        .formula {
+            color: $red;
+        }
+    }
+
+    .effects {
+        width: 940px;
+        justify-content: center;
+        display: grid;
+        gap: 15px;
+        grid-template-columns: repeat(4, 220px);
+
+        .effect {
+            border: 1px solid color.adjust($dark, $lightness: 10%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            width: 200px;
+            padding: 5px;
+            height: 70px;
+
+            p {
+                margin: auto;
+            }
+        }
+    }
+
+    .rules {
+        width: 940px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .rule {
+            width: 700px;
+            text-align: center;
+            border: 1px solid color.adjust($dark, $lightness: 10%);
+            border-radius: 15px;
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            h1 {
+                width: 700px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid color.adjust($dark, $lightness: 10%);
+            }
+        }
+
+    }
+}

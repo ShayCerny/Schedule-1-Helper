@@ -1,0 +1,173 @@
+@use './colors.scss' as *;
+@use 'sass:color';
+
+#dashboard-page {
+    overflow: hidden;
+    height: 710px;
+    max-height: 800px !important;
+    width: 1000px;
+    position: relative;
+    margin-top: 0;
+
+
+
+    .main-content {
+        overflow-y: auto;
+        height: 590px;
+        line-height: 1.5;
+
+        // Custom scrollbar styles
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: color.adjust($dark, $lightness: 5%);
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $light;
+            border-radius: 10px;
+            border: 2px solid $dark;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: $lg;
+        }
+
+        &.dis-closed {
+            height: 740px;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .best-product {
+
+            .best-product-header{
+                width: 800px;
+                margin: auto;
+            }
+
+            .recipe {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                margin: 20px auto;
+                background-color: $darker;
+                border-radius: 5px;
+                border: 1px solid $light;
+                padding: 15px;
+
+                .name-base {
+                    display: flex;
+                    align-items: center;
+
+                    h2 {
+                        margin: 0;
+                    }
+
+                    p {
+                        margin-left: 15px;
+                    }
+                }
+
+                .prices {
+                    display: grid;
+                    grid-template-columns: repeat(2, 280px);
+                    width: 100%;
+                    justify-content: space-between;
+
+                    .price {
+                        color: $lg;
+                        font-size: 28px;
+                    }
+
+                    .addiction {
+                        font-size: 28px;
+                    }
+
+                    p {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+
+        .paragraph {
+            text-indent: 30px;
+            width: 800px;
+            margin: 20px auto;
+        }
+
+        .info {
+            width: 800px;
+            margin: auto;
+
+
+            b {
+                color: $lg;
+                font-size: 28px;
+                text-decoration: underline;
+            }
+
+            li {
+                font-size: 24px;
+            }
+        }
+    }
+
+    .disclaimer {
+        width: 1000px;
+        height: 100px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: $dark ;
+        padding: 20px;
+        box-shadow: 0 -5px 20px color.adjust($dark, $lightness: -10%);
+
+        &.closed {
+            position: relative;
+            display: none;
+        }
+
+        .close-button {
+            display: flex;
+            position: absolute;
+            top: 10px;
+            left: 960px;
+            height: 30px;
+            width: 30px;
+            cursor: pointer;
+
+            &:hover svg {
+                fill: $red;
+            }
+
+            svg {
+                margin: auto;
+                width: 25px;
+                height: 25px;
+                fill: $light;
+                transition: all .2s ease-in-out;
+            }
+        }
+
+        h2 {
+            font-size: 22px;
+            margin: auto;
+            margin-bottom: 10px;
+            color: $red;
+            text-decoration: underline;
+        }
+
+        p {
+            font-size: 18px;
+            text-indent: 30px;
+            width: 960px;
+        }
+    }
+}

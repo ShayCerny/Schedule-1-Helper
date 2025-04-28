@@ -1,0 +1,156 @@
+@use './colors.scss' as *;
+@use "sass:color";
+
+
+.modal {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 1000px;
+    height: 740px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.5);
+    /* darkness */
+    z-index: 10;
+    /* make sure it's above everything else */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-content {
+        width: 750px;
+        height: 600px;
+        background-color: $dark;
+        position: relative;
+        border-radius: 15px;
+
+        .modal-close {
+            position: absolute;
+            right: 0;
+            z-index: 11;
+            fill: $light;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            cursor: pointer;
+
+            &:hover svg {
+                fill: $red
+            }
+
+            svg {
+                height: 40px;
+                width: 40px;
+                margin: auto;
+                transition: fill .2s ease-in-out;
+            }
+        }
+
+    }
+
+}
+
+.save-select {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .saves-list {
+        height: 500px;
+        overflow-y: auto;
+
+        // Custom scrollbar styles
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: color.adjust($dark, $lightness: 5%);
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $light;
+            border-radius: 10px;
+            border: 2px solid $dark;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: $lg;
+        }
+
+        .save {
+            border: 1px solid color.adjust($dark, $lightness: 10%);
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: row;
+            width: 600px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: color.adjust($dark, $lightness: 10%);
+            }
+
+            h2 {
+                margin-left: 20px;
+                width: 370px;
+                overflow-x: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            p {
+                margin: auto;
+                margin-right: 10px;
+                color: $lg;
+                width: 190px;
+            }
+        }
+
+        .skip {
+            border: 1px solid color.adjust($dark, $lightness: 10%);
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 600px;
+            height: 73px;
+            cursor: pointer;
+
+            &::before {
+                content: "Skip for now";
+                font-size: 30px;
+                overflow-x: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            &::after {
+                content: "";
+                color: $red;
+                font-size: 24px;
+
+            }
+
+            &:hover {
+                background-color: color.adjust($dark, $lightness: 10%);
+
+                &::before {
+                    content: ""
+                }
+
+                &::after {
+                    content: "You will not be able to see your discovered products.";
+
+                }
+
+            }
+
+            h2 {}
+        }
+    }
+}

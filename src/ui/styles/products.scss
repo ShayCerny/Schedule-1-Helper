@@ -1,0 +1,50 @@
+@use "./colors.scss" as *;
+@use "sass:color";
+
+#products-page {
+    .product-category {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &#weed h1 {
+            color: $lg;
+        }
+
+        &#meth h1 {
+            color: rgb(96, 210, 210);
+        }
+
+        &#coke h1 {
+            color: rgb(240, 234, 107);
+        }
+
+
+        h1 {
+            text-decoration: underline;
+        }
+
+        .product-list {
+            align-self: center;
+            display: grid;
+            grid-template-columns: repeat(2, 350px);
+            gap: 20px;
+
+            .product {
+                border: 1px solid color.adjust($dark, $lightness: 10%);
+                border-radius: 15px;
+                padding: 10px;
+
+                h2 {
+                    text-align: center;
+                }
+
+
+                .price {
+                    color: $lg;
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+}

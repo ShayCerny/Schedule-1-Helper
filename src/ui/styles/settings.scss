@@ -1,0 +1,89 @@
+@use './colors.scss' as *;
+@use 'sass:color';
+
+// settings.scss
+
+#settings-page {
+    h1 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 15px;
+        color: $lg;
+    }
+
+    .accessibility,
+    .saves {
+        margin-bottom: 30px;
+    }
+
+    .bool {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .bool-text {
+        margin-right: 10px;
+    }
+
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        accent-color: $lg; // Custom color for checkboxes
+    }
+
+    .file-selector {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .file-selector-label-wrapper {
+        display: flex;
+        align-items: center;
+
+        .file-selector-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            margin-top: 5px;
+            font-size: 16px;
+            color: $red;
+            margin-left: 20px;
+        }
+    }
+
+
+    .file-selector-button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        background-color: $dark;
+        transition: background-color 0.3s ease;
+        color: $light;
+
+        &:hover {
+            background-color: $green;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .selected-path {
+        margin-top: 10px;
+    }
+
+
+}

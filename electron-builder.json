@@ -1,0 +1,18 @@
+{
+	"appId": "com.s-cerny.schedule-1-helper",
+	"files": ["dist-electron", "dist-react"],
+	"extraResources": ["dist-electron/preload.cjs"],
+	"productName": "Schedule 1 Helper",
+	"icon": "./logo.png",
+	"artifactName": "Schedule 1 Helper.${ext}",
+	"mac": {
+		"target": "dmg"
+	},
+	"linux": {
+		"target": "AppImage",
+		"category": "Utility"
+	},
+	"win": {
+		"target": ["portable", "msi"]
+	}
+}

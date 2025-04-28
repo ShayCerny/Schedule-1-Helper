@@ -10,8 +10,8 @@ export const DashboardPage = () => {
 	const { settings, setSettings, recipes } = useDataContext();
 
 	const bestProduct = () => {
-		if (!recipes) return null;
-		const r = recipes.slice().sort((a, b) => {
+		if ((recipes?.length ?? -1) < 1) return null;
+		const r = (recipes?.slice() ?? []).sort((a, b) => {
 			const aMinCost = Math.min(...a.cost);
 			const bMinCost = Math.min(...b.cost);
 
@@ -26,58 +26,61 @@ export const DashboardPage = () => {
 		})[0];
 
 		return (
-			<div className="recipe" key={r.displayName}>
-				<div className="name-base">
-					<h2>{r.displayName}</h2>
-					<p>- {r.base.name}</p>
-				</div>
-				<div className="prices">
-					<p>
-						Cost:{" "}
-						{r.cost.map((c, index) => (
-							<span key={index}>
-								<span className="price">
-									{r.cost.length > 1 ? <span>&tilde;</span> : ""}${c}
-								</span>
-								{index < r.cost.length - 1 && " to "}
-							</span>
-						))}
-					</p>
-					<p>
-						Sale Price: <span className="price">${r.salePrice}</span>
-					</p>
-					<p>
-						Batch Profit:{" "}
-						<span>
+			<div className="best-product">
+				<h2 className="best-product-header">Your best strain: </h2>
+				<div className="recipe" key={r.displayName}>
+					<div className="name-base">
+						<h2>{r.displayName}</h2>
+						<p>- {r.base.name}</p>
+					</div>
+					<div className="prices">
+						<p>
+							Cost:{" "}
 							{r.cost.map((c, index) => (
 								<span key={index}>
 									<span className="price">
-										{r.cost.length > 1 ? <span>&tilde;</span> : ""}${r.salePrice * 8 - c}
+										{r.cost.length > 1 ? <span>&tilde;</span> : ""}${c}
 									</span>
 									{index < r.cost.length - 1 && " to "}
 								</span>
 							))}
-						</span>
-					</p>
+						</p>
+						<p>
+							Sale Price: <span className="price">${r.salePrice}</span>
+						</p>
+						<p>
+							Batch Profit:{" "}
+							<span>
+								{r.cost.map((c, index) => (
+									<span key={index}>
+										<span className="price">
+											{r.cost.length > 1 ? <span>&tilde;</span> : ""}${r.salePrice * 8 - c}
+										</span>
+										{index < r.cost.length - 1 && " to "}
+									</span>
+								))}
+							</span>
+						</p>
+						<p>
+							Addiction:{" "}
+							<span className="addiction" style={{ color: getAddictionColor(r.addiction) }}>
+								{r.addiction}
+							</span>
+						</p>
+					</div>
 					<p>
-						Addiction:{" "}
-						<span className="addiction" style={{ color: getAddictionColor(r.addiction) }}>
-							{r.addiction}
-						</span>
+						Effects:{" "}
+						{r.effects.map((e, i) => {
+							const effect = effects?.[e as EffectCode];
+							return (
+								<span key={i}>
+									<span style={{ color: effect?.color || "#ccc" }}>{effect?.name || "Unknown Effect"}</span>
+									{i !== r.effects.length - 1 && ", "}
+								</span>
+							);
+						})}
 					</p>
 				</div>
-				<p>
-					Effects:{" "}
-					{r.effects.map((e, i) => {
-						const effect = effects?.[e as EffectCode];
-						return (
-							<span key={i}>
-								<span style={{ color: effect?.color || "#ccc" }}>{effect?.name || "Unknown Effect"}</span>
-								{i !== r.effects.length - 1 && ", "}
-							</span>
-						);
-					})}
-				</p>
 			</div>
 		);
 	};
@@ -112,10 +115,7 @@ export const DashboardPage = () => {
 		<div className="page" id="dashboard-page" style={{ fontFamily: settings?.useCustomFont ? "Barriecito" : "sans-serif" }}>
 			<div className={(settings?.displayDisclaimer ?? false ? "" : "dis-closed ") + "main-content"}>
 				<h1 className="title">Welcome to Schedule 1 Helper</h1>
-				<div className="best-product">
-					<h2 className="best-product-header">Your best strain: </h2>
-					{bestProduct()}
-				</div>
+				{bestProduct()}
 				<div className="info">
 					<p className="paragraph">
 						<b>Schedule 1 Helper</b> is a companion tool designed to assist players in tracking, organizing, and managing their discovered

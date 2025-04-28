@@ -1,54 +1,33 @@
-# React + TypeScript + Vite
+# Schedule 1 Helper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Schedule 1 Helper** is a companion app for the game **Schedule 1**. It allows users to visualize their discovered strains, track progress, and easily access additional information about their strains and their respective recipes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Discover Strains:** View a list of all discovered strains in the game.
+- **Visualize Recipes:** Trace and visualize ingredient paths for creating new strains and mixing products.
+- **Manage Ingredients:** See all the ingredients that can be used to create new strains, and track which ones you’ve already discovered.
+- **Intuitive Interface:** Easy-to-use interface to navigate through your discovered strains, ingredients, and recipes.
+- **Progress Tracker:** Monitor your progress as you unlock new strains and mix new ingredients to create the perfect product.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Download the latest release from the [Releases Page](https://github.com/yourusername/schedule-1-helper/releases).
+2. Extract the downloaded file.
+3. Run the installer.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Usage
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Once the app is running, you can:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Load your discovered strains from the game's save file.
+- Visualize all available ingredients and recipes to create new strains.
+- Explore the relationship between strains and recipes with the built-in tracing tool.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Contributing
+
+We welcome contributions! If you’d like to contribute to **Schedule 1 Helper**, you can fork the repository, make your changes, and submit a pull request. Contributions are always appreciated, but please note that the official release versions will be managed via GitHub releases.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

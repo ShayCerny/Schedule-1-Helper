@@ -12,7 +12,7 @@
 
 ## Installation
 
-1. Download the latest release from the [Releases Page](https://github.com/yourusername/schedule-1-helper/releases).
+1. Download the latest release from the [Releases Page](https://github.com/ShayCerny/Schedule-1-Helper/releases).
 2. Extract the downloaded file.
 3. Run the installer.
 
